@@ -5,9 +5,9 @@
  * '1 и 6.45, -2, но 8, а затем 15, то есть 2.7 и -1028' => { min: -1028, max: 15 }
  */
 function getMinMax(string) {
-  min = Infinity;
-  max = -Infinity;
-  tokens = string.split(" ");
+  var min = Infinity;
+  var max = -Infinity;
+  var tokens = string.split(" ");
   for (i = 0; i < tokens.length; i++) {
     token = parseFloat(tokens[i]);
     if (isNaN(token)) {
@@ -20,7 +20,7 @@ function getMinMax(string) {
       max = token;
     }
   }
-  return min, max;
+  return {min:min, max:max};
 }
 
 /* ============================================= */
@@ -78,11 +78,11 @@ function rle(input) {
 
 }
 
-// module.exports = {
-//   getMinMax,
-//   rle,
-//   printNumbers,
-//   fibonacciSimple,
-//   fibonacciWithCache
-// };
+module.exports = {
+  getMinMax,
+  rle,
+  printNumbers,
+  fibonacciSimple,
+  fibonacciWithCache
+};
 
