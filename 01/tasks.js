@@ -12,11 +12,17 @@ function getMinMax(string) {
   for (let i = 0; i < tokens.length; i++) {
     let token = parseFloat(tokens[i]);
 
-    if (isNaN(token)) continue;
-    if (min > token) min = token;
-    if (max < token) max = token;
+    if (isNaN(token)) {
+      continue;
+    }
+    if (min > token) {
+      min = token;
+    }
+    if (max < token) {
+      max = token;
+    }
   }
-  return {min: min, max: max};
+  return { min, max };
 }
 
 /* ============================================= */
@@ -27,8 +33,10 @@ function getMinMax(string) {
  * @return {number} число под номером х
  */
 function fibonacciSimple(x) {
-  if (x===1 || x===0) return x;
-  return fibonacciSimple(x-1) + fibonacciSimple(x-2);
+  if (x === 1 || x === 0) {
+    return x;
+  }
+  return fibonacciSimple(x - 1) + fibonacciSimple(x - 2);
 }
 
 /* ============================================= */
@@ -40,17 +48,15 @@ function fibonacciSimple(x) {
  * @return {number} число под номером х
  */
 function fibonacciWithCache(x) {
-    let cache = { 0: 0, 1: 1 };
+  let cache = { 0: 0, 1: 1 };
 
-    function fib(x) {
-        if (x in cache) {
-            return cache[x];
-        } else {
-            cache[x] = fib(x-1) + fib(x-2);
-        }
-        return cache[x];
+  function fib(x) {
+    if (!(x in cache)) {
+      cache[x] = fib(x - 1) + fib(x - 2);
     }
-    return fib(x);
+    return cache[x];
+  }
+  return fib(x);
 }
 
 /* ============================================= */
@@ -71,16 +77,23 @@ function fibonacciWithCache(x) {
  * @return {string}
  */
 function printNumbers(max, cols) {
-  let step = Math.ceil((max + 1)/cols), strNum = step;
-  let result = "";
+  let step = Math.ceil((max + 1) / cols), strNum = step;
+  let result = '';
 
   for (let i = 0; i < strNum; i++) {
     for (let j = i; j <= max; j += step) {
-      if (j.toString().length < 2) result += ' ' + j
-      else result += j;
-      if (j + step <= max) result += ' ';
+      if (j.toString().length < 2) {
+        result += ' ' + j;
+      } else {
+        result += j;
+      }
+      if (j + step <= max) {
+        result += ' ';
+      }
     }
-    if (i !== step-1) result += '\n';
+    if (i !== step - 1) {
+      result += '\n';
+    }
   }
   return result;
 }
@@ -96,17 +109,23 @@ function rle(input) {
   let result = '', i = 1, counter = 0;
 
   while (i < input.length) {
-    if (input.charAt(i) === input.charAt(i-1)) {
-      counter ++;
+    if (input.charAt(i) === input.charAt(i - 1)) {
+      counter++;
     } else {
-      if (counter === 0) result += input.charAt(i-1);
-      else result += input.charAt(i-1) + (counter + 1);
+      if (counter === 0) {
+        result += input.charAt(i - 1);
+      } else {
+        result += input.charAt(i - 1) + (counter + 1);
+      }
       counter = 0;
     }
     i++;
   }
-  if (input.charAt(i-1) === input.charAt(i-2)) result += input.charAt(i-1)+(counter+1);
-  else result += input.charAt(i-1);
+  if (input.charAt(i - 1) === input.charAt(i - 2)) {
+    result += input.charAt(i - 1) + (counter + 1);
+  } else {
+    result += input.charAt(i - 1);
+  }
   return result;
 }
 
