@@ -51,7 +51,7 @@ function fibonacciWithCache(x) {
   let cache = { 0: 0, 1: 1 };
 
   function fib(x) {
-    if (!(x in cache)) {
+    if (cache[x] === undefined) {
       cache[x] = fib(x - 1) + fib(x - 2);
     }
     return cache[x];
