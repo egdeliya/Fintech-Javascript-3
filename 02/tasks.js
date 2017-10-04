@@ -73,7 +73,17 @@ function anagram(first, second) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getUnique(arr) {
-  return [];
+  let cache = {};
+
+  return arr
+    .filter(item => {
+      if (!cache.hasOwnProperty(item)) {
+        cache[item] = true;
+        return true;
+      }
+      return false;
+    })
+    .sort();
 }
 
 /**
