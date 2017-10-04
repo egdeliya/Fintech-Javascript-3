@@ -48,14 +48,18 @@ function anagram(first, second) {
   if (first.length != second.length) {
     return false;
   }
-  let dict = {},  arrSym = first.split('');
-  arrSym.forEach(function (ch) {
+  let dict = {};
+
+  first
+    .split('')
+    .forEach(function (ch) {
       if (dict.hasOwnProperty(ch)) {
         ++dict[ch];
       } else {
         dict[ch] = 1;
       }
     });
+
   return second
     .split('')
     .every(ch => dict.hasOwnProperty(ch) && --dict[ch] >= 0)
