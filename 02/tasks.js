@@ -4,8 +4,15 @@
  */
 function timer(logger = console.log) {
   for (var i = 0; i < 10; i++) {
+    let obj = {
+      ind : i,
+      getI : function () {
+        let x =(() => this.ind);
+        return x;
+      }
+    }
     setTimeout(() => {
-      logger(i);
+      logger(obj.getI()());
     }, 100);
   }
 }
@@ -136,7 +143,7 @@ function isIsomorphic(left, right) {
     return false;
   }
 
-  return getIntersection(left.split(''), right.split('')).length >= (left.length - 1);
+  return (getIntersection(left.split(''), right.split('')).length) >= (left.length - 1);
 }
 
 module.exports = {
