@@ -39,7 +39,7 @@ function customBind(func, context, ...args) {
  * sum :: void -> Number
  */
 function sum(x) {
-  return 0;
+  return x;
 }
 
 /*= ============================================ */
@@ -89,7 +89,9 @@ function getUnique(arr) {
       }
       return false;
     })
-    .sort();
+    .sort(function (left, right) {
+      return (left <= right) ? -1 : 1;
+    });
 }
 
 /**
@@ -118,7 +120,7 @@ function getIntersection(first, second) {
       return --inFirst[item] >= 0;
     })
     .sort(function (left, right) {
-      return left >= right;
+      return (left <= right) ? -1 : 1;
     });
 }
 
@@ -142,7 +144,17 @@ function isIsomorphic(left, right) {
     return false;
   }
 
-  return (getIntersection(left.split(''), right.split('')).length) >= (left.length - 1);
+  let notOnlyOneDiff = true;
+  for (let i = 0; i < left.length; ++i) {
+    if (left[i] !== right[i]) {
+      if (!notOnlyOneDiff) {
+        return false;
+      }
+      notOnlyOneDiff = false;
+    }
+  }
+
+  return true;
 }
 
 module.exports = {
