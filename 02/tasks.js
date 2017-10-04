@@ -4,15 +4,7 @@
  */
 function timer(logger = console.log) {
   for (var i = 0; i < 10; i++) {
-    let storageObj = {
-      ind : i,
-      getInd : function () {
-        return this.ind;
-      }
-    }
-    setTimeout(() => {
-      logger(storageObj.getInd());
-    }, 100);
+    setTimeout(logger.bind(this, i), 100);
   }
 }
 
