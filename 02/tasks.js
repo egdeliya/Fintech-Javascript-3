@@ -20,6 +20,7 @@ function timer(logger = console.log) {
 function customBind(func, context, ...args) {
   let cont = context;
   let params = args;
+
   function myBind(...newArguments) {
     func.apply(cont, params.concat(newArguments));
   }
@@ -89,7 +90,7 @@ function getUnique(arr) {
   let isUnique = {};
 
   return arr.filter(item => {
-    if (!isUnique.hasOwnProperty(item)) {
+    if (isUnique[item] === undefined) {
       isUnique[item] = true;
       return true;
     }
