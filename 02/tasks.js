@@ -36,7 +36,18 @@ function customBind(func, context, ...args) {
  * sum :: void -> Number
  */
 function sum(x) {
-  return x;
+  if (x === undefined) {
+    return 0;
+  }
+  let localSum = x;
+  function get_sum(value) {
+    if (value === undefined) {
+      return localSum;
+    }
+    localSum += value;
+    return get_sum;
+  }
+  return get_sum;
 }
 
 /*= ============================================ */
