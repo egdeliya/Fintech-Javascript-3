@@ -20,8 +20,8 @@ function timer(logger = console.log) {
 function customBind(func, context, ...args) {
     let cont = context;
     let params = args;
-    function myBind(...arguments) {
-      func.apply(cont, params.concat(arguments));
+    function myBind(...newArguments) {
+      func.apply(cont, params.concat(newArguments));
     };
     return myBind;
 }
