@@ -18,12 +18,12 @@ function timer(logger = console.log) {
  * @return {Function} функция с нужным контекстом
  */
 function customBind(func, context, ...args) {
-    let cont = context;
-    let params = args;
-    function myBind(...newArguments) {
-      func.apply(cont, params.concat(newArguments));
-    };
-    return myBind;
+  let cont = context;
+  let params = args;
+  function myBind(...newArguments) {
+    func.apply(cont, params.concat(newArguments));
+  }
+  return myBind;
 }
 
 /*= ============================================ */
@@ -40,14 +40,15 @@ function sum(x) {
     return 0;
   }
   let localSum = x;
-  function get_sum(value) {
+
+  function getSum(value) {
     if (value === undefined) {
       return localSum;
     }
     localSum += value;
-    return get_sum;
+    return getSum;
   }
-  return get_sum;
+  return getSum;
 }
 
 /*= ============================================ */
@@ -59,24 +60,22 @@ function sum(x) {
  * @return {boolean}
  */
 function anagram(first, second) {
-  if (first.length != second.length) {
+  if (first.length !== second.length) {
     return false;
   }
   let dict = {};
 
-  first
-    .split('')
-    .forEach(function (ch) {
-      if (dict.hasOwnProperty(ch)) {
+  first.split('')
+    .forEach(function(ch) {
+      if (dict[ch] !== undefined) {
         ++dict[ch];
       } else {
         dict[ch] = 1;
       }
     });
 
-  return second
-    .split('')
-    .every(ch => dict.hasOwnProperty(ch) && --dict[ch] >= 0)
+  return second.split('')
+    .every(ch => dict[ch] !== undefined && --dict[ch] >= 0);
 }
 /*= ============================================ */
 
@@ -89,17 +88,15 @@ function anagram(first, second) {
 function getUnique(arr) {
   let isUnique = {};
 
-  return arr
-    .filter(item => {
-      if (!isUnique.hasOwnProperty(item)) {
-        isUnique[item] = true;
-        return true;
-      }
-      return false;
-    })
-    .sort(function (left, right) {
-      return (left <= right) ? -1 : 1;
-    });
+  return arr.filter(item => {
+    if (!isUnique.hasOwnProperty(item)) {
+      isUnique[item] = true;
+      return true;
+    }
+    return false;
+  }).sort(function(left, right) {
+    return (left <= right) ? -1 : 1;
+  });
 }
 
 /**
@@ -111,25 +108,22 @@ function getUnique(arr) {
 function getIntersection(first, second) {
   let inFirst = {};
 
-  first
-    .forEach(function (item) {
-      if (inFirst.hasOwnProperty(item)) {
-        ++inFirst[item];
-      } else {
-        inFirst[item] = 1;
-      }
-    });
+  first.forEach(function(item) {
+    if (inFirst[item] !== undefined) {
+      ++inFirst[item];
+    } else {
+      inFirst[item] = 1;
+    }
+  });
 
-  return second
-    .filter(item => {
-      if (!inFirst.hasOwnProperty(item)) {
-        return false;
-      }
-      return --inFirst[item] >= 0;
-    })
-    .sort(function (left, right) {
-      return (left <= right) ? -1 : 1;
-    });
+  return second.filter(item => {
+    if (inFirst[item] === undefined) {
+      return false;
+    }
+    return --inFirst[item] >= 0;
+  }).sort(function(left, right) {
+    return (left <= right) ? -1 : 1;
+  });
 }
 
 /* ============================================= */
@@ -148,11 +142,12 @@ function getIntersection(first, second) {
  * @return {boolean}
  */
 function isIsomorphic(left, right) {
-  if (left.length != right.length) {
+  if (left.length !== right.length) {
     return false;
   }
 
   let notOnlyOneDiff = true;
+
   for (let i = 0; i < left.length; ++i) {
     if (left[i] !== right[i]) {
       if (!notOnlyOneDiff) {
@@ -174,3 +169,4 @@ module.exports = {
   getIntersection,
   isIsomorphic
 };
+
