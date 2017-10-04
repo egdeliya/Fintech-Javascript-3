@@ -132,7 +132,11 @@ function getIntersection(first, second) {
  * @return {boolean}
  */
 function isIsomorphic(left, right) {
+  if (left.length != right.length) {
+    return false;
+  }
 
+  return getIntersection(left.split(''), right.split('')).length >= (left.length - 1);
 }
 
 module.exports = {
