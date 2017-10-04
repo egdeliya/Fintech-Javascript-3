@@ -73,12 +73,12 @@ function anagram(first, second) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getUnique(arr) {
-  let cache = {};
+  let isUnique = {};
 
   return arr
     .filter(item => {
-      if (!cache.hasOwnProperty(item)) {
-        cache[item] = true;
+      if (!isUnique.hasOwnProperty(item)) {
+        isUnique[item] = true;
         return true;
       }
       return false;
@@ -90,10 +90,30 @@ function getUnique(arr) {
  * Найдите пересечение двух массивов
  * [1, 3, 5, 7, 9] и [1, 2, 3, 4] → [1, 3]
  * @param {Array<number>, Array<number>} first, second исходные массивы
- * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
+ * @return {Array<number>} массив значений, отсортированный по возрастанию
  */
 function getIntersection(first, second) {
-  return [];
+  let inFirst = {};
+
+  first
+    .forEach(function (item) {
+      if (inFirst.hasOwnProperty(item)) {
+        ++inFirst[item];
+      } else {
+        inFirst[item] = 1;
+      }
+    });
+
+  return second
+    .filter(item => {
+      if (!inFirst.hasOwnProperty(item)) {
+        return false;
+      }
+      return --inFirst[item] >= 0;
+    })
+    .sort(function (left, right) {
+      return left >= right;
+    });
 }
 
 /* ============================================= */
