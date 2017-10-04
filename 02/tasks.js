@@ -4,15 +4,14 @@
  */
 function timer(logger = console.log) {
   for (var i = 0; i < 10; i++) {
-    let obj = {
+    let storageObj = {
       ind : i,
-      getI : function () {
-        let x =(() => this.ind);
-        return x;
+      getInd : function () {
+        return this.ind;
       }
     }
     setTimeout(() => {
-      logger(obj.getI()());
+      logger(storageObj.getInd());
     }, 100);
   }
 }
