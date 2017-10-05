@@ -18,11 +18,9 @@ function timer(logger = console.log) {
  * @return {Function} функция с нужным контекстом
  */
 function customBind(func, context, ...args) {
-  let cont = context;
-  let params = args;
 
   function myBind(...newArguments) {
-    func.apply(cont, params.concat(newArguments));
+    func.apply(context, params.concat(args));
   }
   return myBind;
 }
@@ -96,7 +94,7 @@ function getUnique(arr) {
     }
     return false;
   }).sort(function(left, right) {
-    return (left <= right) ? -1 : 1;
+    return (left - right);
   });
 }
 
@@ -123,7 +121,7 @@ function getIntersection(first, second) {
     }
     return --inFirst[item] >= 0;
   }).sort(function(left, right) {
-    return (left <= right) ? -1 : 1;
+    return (left - right);
   });
 }
 
@@ -147,14 +145,14 @@ function isIsomorphic(left, right) {
     return false;
   }
 
-  let notOnlyOneDiff = true;
+  let flag = true;
 
   for (let i = 0; i < left.length; ++i) {
     if (left[i] !== right[i]) {
-      if (!notOnlyOneDiff) {
+      if (!flag) {
         return false;
       }
-      notOnlyOneDiff = false;
+      flag = false;
     }
   }
 
