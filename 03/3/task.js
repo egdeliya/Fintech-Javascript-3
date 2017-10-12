@@ -10,7 +10,7 @@ function promiseAll(promises) {
   let resolvedValues = [];
   let counter = 0;
 
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     promises.forEach((prom, index) => {
       prom.then(value => {
         resolvedValues[index] = value;
