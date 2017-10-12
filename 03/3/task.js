@@ -6,7 +6,29 @@
  * @return {Promise}
  */
 function promiseAll(promises) {
-  return Promise.resolve(null);
+  return new Promise( function (resolve, reject) {
+    promises.reduce(function (values, prom) {
+      // console.log("hello");
+      console.log(values);
+      Promise.resolve(prom.then(value => (value)));
+      return values.concat(prom.then(resolve, reject));
+    }, []);
+  });
 }
+// noinspection JSAnnotator
+// const p = Promise.resolve(Promise.reject('error'));
+// p.catch(error => console.log(error));
 
+console.log([].concat([1, 2]));
+promiseAll([
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+]).then(
+  values => {
+    console.log(":hello")
+    console.log(values);
+  },
+  errValue => console.log(`Rejection with ${errValue}`)
+);
 module.exports = promiseAll;
