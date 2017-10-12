@@ -8,9 +8,13 @@
  * @class NumberAndString
  * @param {String} str - initial value
  */
-class NumberAndString {
+class NumberAndString extends String {
   constructor(str) {
-
+    super(str);
+    this.len = str.length;
+  }
+  valueOf(arg) {
+    return this.len;
   }
 }
 
