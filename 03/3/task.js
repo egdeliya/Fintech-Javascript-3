@@ -5,12 +5,24 @@
  * @param {Array<Promise>} promises - массив с исходными промисами
  * @return {Promise}
  */
+
 function promiseAll(promises) {
-  let results = [];
-  let allRes = promises.reduce((acc, prom) => {
-    acc.then(() => prom).then(res => results.push(res));
-  }, Promise.resolve(null));
-  return allRes.then(() => results);
+  let resolvedValues = [];
+  let counter = 0;
+
+  return new Promise(function (resolve, reject) {
+    promises.forEach((prom, index) => {
+      prom.then(value => {
+        resolvedValues[index] = value;
+        counter++;
+      }, reject)
+        .then(() => {
+          if (counter === promises.length) {
+            resolve(resolvedValues);
+          }
+        }, err => err);
+    });
+  });
 }
 
 module.exports = promiseAll;
