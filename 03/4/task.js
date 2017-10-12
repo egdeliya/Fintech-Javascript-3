@@ -6,7 +6,7 @@
  */
 
 function promiseRace(promises) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     promises.forEach(p => {
       p.then(resolve).catch(reject);
     });
