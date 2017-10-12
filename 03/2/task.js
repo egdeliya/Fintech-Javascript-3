@@ -9,12 +9,24 @@
  */
 
 function rejectOnTimeout(promise, timeoutInMilliseconds) {
-  let rejectPromise = new Promise(function (resolve, reject) {
-    setTimeout(reject, timeoutInMilliseconds, 'timeout_error')
-  })
-  return new Promise(function (resolve, reject) {
-    promise.then(resolve).catch(reject);
-    rejectPromise.catch(reject);
+  let resolveValue = null;
+  let rejectValue = null;
+
+  promise.then(
+    value => resolveValue = value,
+    err => rejectValue = err
+  );
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (resolveValue !== null) {
+        resolve(resolveValue);
+      } else if (rejectValue !== null) {
+        reject(rejectValue);
+      } else {
+        reject('timeout_error');
+      }
+    }, timeoutInMilliseconds);
   });
 }
 
