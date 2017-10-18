@@ -1,0 +1,22 @@
+p, h2, h1 {
+    text-align: center;
+    color: lightseagreen;
+}
+
+body {
+    background: lightcyan;
+}
+
+ul {
+    margin:0;
+    padding:0;
+    text-align: center;
+    color: lightseagreen;
+    list-style:none;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
