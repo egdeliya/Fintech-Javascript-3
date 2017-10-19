@@ -1,22 +1,14 @@
-p, h2, h1 {
-    text-align: center;
+body {
+    width: 960px;
+    margin: 0 auto;
+    background-color: lightcyan;
     color: lightseagreen;
 }
 
-body {
-    background: lightcyan;
+h1, p{
+    font-size: medium;
 }
 
 ul {
-    margin:0;
-    padding:0;
-    text-align: center;
-    color: lightseagreen;
-    list-style:none;
-}
-
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    list-style-type: circle;
 }
