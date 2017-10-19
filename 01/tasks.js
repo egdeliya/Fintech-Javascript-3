@@ -5,22 +5,24 @@
  * '1 и 6.45, -2, но 8, а затем 15, то есть 2.7 и -1028' => { min: -1028, max: 15 }
  */
 function getMinMax(string) {
-  var min = Infinity;
-  var max = -Infinity;
-  var tokens = string.split(" ");
-  for (i = 0; i < tokens.length; i++) {
-    token = parseFloat(tokens[i]);
+  let min = Infinity;
+  let max = -Infinity;
+  let tokens = string.split(' ');
+
+  for (let i = 0; i < tokens.length; i++) {
+    let token = parseFloat(tokens[i]);
+
     if (isNaN(token)) {
       continue;
     }
     if (min > token) {
-        min = token;
+      min = token;
     }
     if (max < token) {
       max = token;
     }
   }
-  return {min:min, max:max};
+  return { min, max };
 }
 
 /* ============================================= */
@@ -31,7 +33,10 @@ function getMinMax(string) {
  * @return {number} число под номером х
  */
 function fibonacciSimple(x) {
-  return x;
+  if (x === 1 || x === 0) {
+    return x;
+  }
+  return fibonacciSimple(x - 1) + fibonacciSimple(x - 2);
 }
 
 /* ============================================= */
@@ -43,7 +48,18 @@ function fibonacciSimple(x) {
  * @return {number} число под номером х
  */
 function fibonacciWithCache(x) {
-  return x;
+  let cache = [];
+
+  cache[0] = 0;
+  cache[1] = 1;
+
+  function fib(x) {
+    if (cache[x] === undefined) {
+      cache[x] = fib(x - 1) + fib(x - 2);
+    }
+    return cache[x];
+  }
+  return fib(x);
 }
 
 /* ============================================= */
@@ -64,7 +80,25 @@ function fibonacciWithCache(x) {
  * @return {string}
  */
 function printNumbers(max, cols) {
+  let step = Math.ceil((max + 1) / cols), strNum = step;
+  let result = '';
 
+  for (let i = 0; i < strNum; i++) {
+    for (let j = i; j <= max; j += step) {
+      if (j.toString().length < 2) {
+        result += ' ' + j;
+      } else {
+        result += j;
+      }
+      if (j + step <= max) {
+        result += ' ';
+      }
+    }
+    if (i !== step - 1) {
+      result += '\n';
+    }
+  }
+  return result;
 }
 
 /* ============================================= */
@@ -75,7 +109,27 @@ function printNumbers(max, cols) {
  * @return {string}
  */
 function rle(input) {
+  let result = '', i = 1, counter = 0;
 
+  while (i < input.length) {
+    if (input.charAt(i) === input.charAt(i - 1)) {
+      counter++;
+    } else {
+      if (counter === 0) {
+        result += input.charAt(i - 1);
+      } else {
+        result += input.charAt(i - 1) + (counter + 1);
+      }
+      counter = 0;
+    }
+    i++;
+  }
+  if (input.charAt(i - 1) === input.charAt(i - 2)) {
+    result += input.charAt(i - 1) + (counter + 1);
+  } else {
+    result += input.charAt(i - 1);
+  }
+  return result;
 }
 
 module.exports = {
