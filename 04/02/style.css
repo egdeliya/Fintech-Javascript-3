@@ -1,7 +1,12 @@
 .example1 table {
     overflow: hidden;
     table-layout: fixed;
-    width: 90ch;
+    border-collapse:collapse;
+    width: 100px;
+}
+
+.example1 td {
+    width: 10px;
 }
 
 .example1 td:first-child {
@@ -20,11 +25,10 @@
 
 .example1 tr:hover {
     background-color: aqua;
-
 }
 
 .example1 thead th {
-    border-bottom: solid;
+    border-bottom: 1px solid;
     background-color: rgb(2, 255, 122);
 }
 
