@@ -2,17 +2,27 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet" >
     <title>Задание 5.2</title>
 </head>
 <body>
-<h1>Сверстать баннер. Pixel-perfect</h1>
-<p>
-    Подробности по ссылке:
-    <a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a3075a4ec334e848d7f333">
-        https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a3075a4ec334e848d7f333
-    </a>, для того чтобы получить доступ, нужно зарегестрироваться на
-    <a href="https://zeplin.io/">zeplin.io</a>, и попросить доступ у Евгения Мамаева.
-</p>
-<img src="./task.png" alt="">
+<div class="main-container">
+    <div class="card-container"><img src="img/cards.png"
+         srcset="img/cards@2x.png 2x,
+             img/cards@3x.png 3x" class="Cards"></div>
+    <div class="flex-container">
+        <p class="header-container">Карты для вас прямо сейчас</p>
+        <p class="second-block-container">
+            <div class="second-block-content">
+                <div>Выбирайте карту, пользуйтесь</div>
+                <div>удобными сервисами</div>
+            </div>
+        </p>
+        <form class="last-block-container"><text class="last-block-content">Оформить заявку</text></form>
+    </div>
+</div>
+<img src="./task.png" alt="" class="task-image">
 </body>
 </html>

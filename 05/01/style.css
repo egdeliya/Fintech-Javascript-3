@@ -4,6 +4,7 @@ body {
     margin: auto;
     max-width: 1080px;
 }
+
 .menu-container {
     margin: auto;
     width: 1080px;
@@ -31,9 +32,10 @@ body {
     border-bottom-color: #ffdd2d;
 }
 
-li a {
+.li-content {
     display: flex;
     text-align: center;
+    height: 15px;
     font-size: 13px;
     white-space: nowrap;
     font-family: Roboto, Arial, sans-serif;
