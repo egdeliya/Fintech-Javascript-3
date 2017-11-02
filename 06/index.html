@@ -2,28 +2,33 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet/less" type="text/css" href="./main.less" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js" ></script>
-    <title>Задание 6.1</title>
+    <title>Задание 5.1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="stylesheet/less" type="text.css" href="style.less"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,300&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
 </head>
 <body>
-<h1>Сверстать полную страницу (без футера).</h1>
-<h4>Макеты:</h4>
-<ul>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a307604687f0394b3ba039">Desktop 1</a></li>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a3075a4ec334e848d7f333">Desktop 2</a></li>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a3076d2fc6273f38fc51c5">Mobile 1</a></li>
+<ul class="nav">
+    <li class="nav__item"><a href="#карты">карты</a></li>
+    <li class="nav__item"><a href="#вклады">вклады</a></li>
+    <li class="nav__item"><a href="#платежи и переводы">платежи и переводы</a></li>
+    <li class="nav__item"><a href="#бонусы">бонусы</a></li>
+    <li class="nav__item"><a href="#страхование">страхование</a></li>
+    <li class="nav__item"><a href="#о банке">о банке</a></li>
 </ul>
-<h4>Особенности:</h4>
-<ul>
-    <li>Брейкпойнт для мобильной: 640px</li>
-    <li>До брейкпойнта верстка ломаться не должна, если ломается и никак иначе не избежать, ввести промежуточный брейкпойнт.</li>
-    <li>Использоваться БЭМ-нэйминг для классов.</li>
-    <li>Использовать less.</li>
-    <li>Повторяющиеся размера, цвета вынести в переменные.</li>
-    <li>Для элементов, у которых могут меняться состояние (цвет текста, бордер, фон, размер, позиция и тп), добавить transition.</li>
-    <li>Тултип также должен появляться с анимацией.</li>
-    <li>Для иконок использовать svg.</li>
-</ul>
+<div class="banner">
+    <div class="banner__card-img-container"/></div>
+    <div class="banner__content-container">
+        <h1>Карты для&nbsp;вас прямо&nbsp;сейчас</h1>
+        <p>Выбирайте карту, пользуйтесь<br>удобными&nbsp;сервисами</p>
+        <button type="button">Оформить заявку</button>
+    </div>
+</div>
+<div class="headers">
+    <h2 class="headers__title">Любые категории&nbsp;платежей<h2>
+
+</div>
+<!--<img src="./task.png" alt="">-->
 </body>
 </html>
