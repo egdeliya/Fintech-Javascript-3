@@ -99,7 +99,6 @@
     </div>
 </div>
 <!-- form code -->
-<!-- form code -->
 <div class="form">
     <h2 class="form__title">Заполните несколько простых полей</h2>
     <form class="form__content">
@@ -110,54 +109,41 @@
         <div>
             <input type="text" class="form__input"/>
             <span class="form__label">Город проживания</span>
-        </div>
-        <!-- <div class="form-element" style="background: none; border: solid 1px #d0011b; margin-bottom: 11px">
-            <div class="content-container">
-                <label class="form-label" for="city">Город проживания</label>
-                <input class="form-input-field" type="text" id="city" name="city"
-                       contenteditable="false" placeholder="Город проживания">
-            </div>
             <img src="img/exclamation_point.svg"
                  class="exclamation-svg">
-        </div> -->
-        <!-- <label class="message-label">Для заполнения этого поля не допустимо использовать буквы латинского алфавита</label>
-        <div class="form-element">
-            <div class="content-container">
-                <label class="form-label"  for="phone">Мобильный телефон</label>
-                <input class="form-input-field" type="tel" id="phone" name="phone"
-                       contenteditable="false" placeholder="Мобильный телефон">
-            </div>
         </div>
-        <div class="form-element">
-            <div class="content-container">
-                <label class="form-label" for="email">Электронная почта</label>
-                <input class="form-input-field" type="email" id="email" name="email"
-                       contenteditable="False" placeholder="Электронная почта">
-            </div>
+        <label class="form__error-label">Для заполнения этого поля не допустимо использовать буквы латинского алфавита</label>
+        <div>
+            <input type="tel" class="form__input"/>
+            <span class="form__label">Мобильный телефон</span>
+        </div>
+        <block class="info-block">
+            Ваши данные замаскированы в целях безопасности. Для изменения информации с вами свяжется оператор колл-центра.
+        </block>
+        <div>
+            <input type="email" class="form__input"/>
+            <span class="form__label">Электронная почта</span>
             <img src="img/question-mark.svg"
                  class="question-svg">
         </div>
-        <div class="form-element" style="background: none">
-            <div class="choose-container">
-                Выберите это или другое
-            </div>
-        </div>
-        <div class="blocks-element" style="background: none">
-            <div class="block-container">
-                <div class="block-container-text">Это</div>
-                <img src="img/radio-active.svg"
-                     class="radio-active-svg">
-            </div>
-            <div class="block-container" style="margin-left: auto">
-                <div class="block-container-text">Другое</div>
-                <img src="img/radio.svg"
-                     class="radio-svg">
-            </div>
-        </div> -->
-    </form>
-    <form class="last-block-container">
-        <text class="last-block-content">Оформить заявку</text>
-    </form>
+        <block class="block">
+            Выберите это или другое
+        </block>
+        <block class="blocks-wrapper">
+            <block class="radio-block">
+                <input type="radio" value="1" id="r1"/>
+                <label for="r1">Это</label>
+            </block>
+            <block class="radio-block">
+                <input type="radio" value="2" id="r2"/>
+                <label for="r2">Другое</label>
+            </block>
+        </block>
+
+        <button type="button" style="max-width: 212px; margin-left: 170px">Оформить заявку</button>
+
+</form>
+
 </div>
 <!--<img src="./task.png" alt="" class="task-image">-->
 <!--<img src="./task.png" alt="">-->
