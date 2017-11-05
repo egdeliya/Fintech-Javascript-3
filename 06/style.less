@@ -1,0 +1,431 @@
+@headers-text-color: #fff;
+@text-color-dark: #333;
+@main-color: #ffdd2d;
+
+body {
+  margin: auto;
+  max-width: 1080px;
+  font-family: 'Roboto';
+}
+
+.header {
+  height: 95px;
+  display: flex;
+  padding-left: 10%;
+  padding-right: 10%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  span {
+    max-width: 173px;
+    font-family: Roboto;
+    font-size: 21px;
+    color: @text-color-dark;
+  }
+}
+
+/* --------------- navigation bar code ------------- */
+.nav {
+  margin: auto;
+  height: 65px;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color: #3e4757;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid #3e4757;
+  transition-property: border-bottom-color;
+  transition-duration: 2s;
+
+  &:hover {
+    border-bottom-color: @main-color;
+  }
+
+  a {
+    display: flex;
+    line-height: 15px;
+    font-size: 2.1vmin;
+    white-space: nowrap;
+    letter-spacing: 0.9px;
+    color: @headers-text-color;
+    text-decoration: none;
+  }
+}
+
+/* ------------- banner code -------------- */
+.banner {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  max-width: 1080px;
+  height: 413px;
+  background-image: linear-gradient(to right, #1489e7, #003e82);
+}
+
+.banner__content-container {
+  margin-left: 14px;
+  margin-top: 91px;
+  margin-bottom: 74px;
+  width: 50% - 14px;
+  box-sizing: border-box;
+  position: relative;
+
+  h1 {
+    font-size: 50px;
+    font-weight: 100;
+    line-height: 1;
+    color: @headers-text-color;
+    margin: 0;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: @headers-text-color;
+  }
+}
+
+button {
+  border: none;
+  white-space: nowrap;
+  height: 62px;
+  border-radius: 6px;
+  padding: 20px 35px;
+  background-color: @main-color;
+  font-family: 'Roboto';
+  font-size: 17px;
+  text-align: center;
+  color: @text-color-dark;
+  cursor: pointer;
+
+  &:hover {
+    background: darken(@main-color, 10%);
+  }
+
+  &:active {
+    background: saturate(@main-color, 20%);
+    color: #777;
+  }
+}
+
+.banner__card-img-container {
+  width: 50%;
+  background-repeat: no-repeat;
+  background-position: -37px -87px;
+  background-image: url('https://egdeliya.github.io/Fintech-Javascript/05/02/img/cards.png');
+}
+
+/* ------------------ tags ----------------- */
+.tags {
+  max-width: 829px;
+  margin: auto;
+  margin-top: 82px;
+  margin-bottom: 76px;
+}
+
+.tags__title {
+  font-family: Roboto;
+  font-size: 50px;
+  font-weight: 300;
+  text-align: center;
+  color: @text-color-dark;
+}
+
+.tags__container {
+  border-radius: 6px;
+  padding: 18px;
+  border: solid 1px #dddfe0;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.tags__content {
+  height: 42px;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  max-width: 300px;
+  white-space: nowrap;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  padding: 11px;
+  flex-direction: row;
+  background-color: #eef2f7;
+  align-items: center;
+  box-sizing: border-box;
+
+  text {
+    height: 15px;
+    font-size: 13px;
+    overflow: hidden;
+    margin-right: 11px;
+    background: linear-gradient(to right, #333, #5a5a5a 220px, #eef2f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.delete-svg {
+  width: 11px;
+  height: 11px;
+  object-fit: contain;
+}
+
+/* ---------------- form code ------------------ */
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 540px;
+  margin: auto;
+  margin-top: 76px;
+}
+
+.form__title {
+  font-family: Roboto;
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 1.08;
+  text-align: center;
+  color: @text-color-dark;
+}
+
+.form__items {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  align-items: stretch;
+}
+
+.form__item {
+  height: 66px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 6px;
+  border: none;
+  background-color: #eef2f7;
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.form__item_active {
+  margin-bottom: 0;
+
+  &:hover {
+    background: none;
+    border: solid 1px #d0011b;
+  }
+
+  &:hover ~ .form__error-label {
+    visibility: visible;
+  }
+
+  &:hover .exclamation-svg {
+    opacity: 1;
+  }
+}
+
+.form__item-input {
+  font-size: 17px;
+  font-family: Roboto;
+  color: @text-color-dark;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 20px;
+  background: none;
+
+  &:focus ~ .form__item-label {
+    top: 10%;
+    font-size: 13px;
+  }
+}
+
+.form__item-label {
+  position: absolute;
+  pointer-events: none;
+  color: #74a3c7;
+  font-size: 17px;
+  margin-left: 20px;
+  top: 35%;
+  transition: 0.2s ease;
+}
+
+.form__error-label {
+  height: 15px;
+  font-size: 13px;
+  color: #d0021b;
+  visibility: hidden;
+}
+
+.form__radio-items-title {
+  font-size: 21px;
+  font-weight: 300;
+  text-align: center;
+  color: @text-color-dark;
+  padding-top: 8px;
+  padding-bottom: 24px;
+}
+
+.form__info-block {
+  position: relative;
+  margin-left: 202px;
+  margin-top: 348px;
+  padding: 16px;
+  max-width: 284px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: solid 1px #dddfe0;
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+.radio-items-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 11px;
+}
+
+.form__item-radio {
+  height: 66px;
+  width: 48%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 6px;
+  align-items: center;
+  border: solid 1px #dddfe0;
+
+  input {
+    opacity: 0;
+    order: 1;
+    width: 18px;
+  }
+
+  label {
+    float: left;
+    order: 0;
+    color: #74a3c7;
+  }
+
+  input + label {
+    margin: 0;
+    clear: none;
+    padding: 6px 70% 6px 20px;
+    cursor: pointer;
+    background: url(img/radio.svg) right center no-repeat;
+  }
+
+  input:checked + label {
+    background-image: url(img/radio-active.svg);
+    color: @text-color-dark;
+  }
+}
+
+/* ------------------- svg ----------------- */
+.exclamation-svg {
+  margin-left: auto;
+  margin-right: 17px;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  object-fit: contain;
+}
+
+.question-svg {
+  width: 24px;
+  height: 24px;
+  visibility: visible;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: 17px;
+  cursor: pointer;
+
+  &:hover ~ .form__info-block {
+    opacity: 1;
+  }
+}
+
+.radio-active-svg {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  margin-left: auto;
+}
+
+.radio-svg {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  background-color: #eef2f7;
+  margin-left: auto;
+}
+
+.logo-mobile-svg {
+  display: none;
+}
+
+.menu-svg {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 5%;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .banner__card-img-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .banner {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to bottom, #168de7, #00428a);
+  }
+
+  .banner__content-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10%;
+    background-repeat: no-repeat;
+    background-image: url('https://egdeliya.github.io/Fintech-Javascript/05/02/img/cards.png');
+  }
+
+  h1 {
+    font-size: 20vmin;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: @headers-text-color;
+  }
+}
