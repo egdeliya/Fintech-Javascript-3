@@ -21,10 +21,10 @@ function doubleClick(element, doubleClickHandler, timeDistance) {
 }
 
 function onClick() {
-  let newLiElement = document.createElement('li');
-  let now = new Date();
+  const newLiElement = document.createElement('li');
+  const curDate = new Date();
 
-  newLiElement.textContent = '2xClick - ' + now.toString()
+  newLiElement.textContent = '2xClick - ' + curDate.toString()
     .split(' ')
     .slice(0, -4)
     .join(' ');
