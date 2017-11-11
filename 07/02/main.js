@@ -1,0 +1,35 @@
+const btnClickMe = document.querySelector('.btn-click-me');
+const checkList = document.querySelector('.check-list');
+
+function doubleClick(element, doubleClickHandler, timeDistance) {
+  let lastTimeClicked = new Date();
+  let firstTimeClicked = false;
+
+  function doubleClickHandlerWrapper(event) {
+    const currentTimeClicked = Date.now();
+
+    firstTimeClicked = !firstTimeClicked;
+
+    if (firstTimeClicked) {
+      lastTimeClicked = currentTimeClicked;
+    } else if (currentTimeClicked - lastTimeClicked < timeDistance) {
+      doubleClickHandler(event);
+    }
+  }
+
+  element.addEventListener('click', doubleClickHandlerWrapper);
+}
+
+function onClick() {
+  let newLiElement = document.createElement('li');
+  let now = new Date();
+
+  newLiElement.textContent = '2xClick - ' + now.toString()
+    .split(' ')
+    .slice(0, -4)
+    .join(' ');
+
+  checkList.appendChild(newLiElement);
+}
+
+doubleClick(btnClickMe, onClick, 500);

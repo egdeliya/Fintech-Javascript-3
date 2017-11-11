@@ -3,7 +3,7 @@ const { throttle } = require('./task');
 
 describe('throttle', () => {
   it('should invoke throttle execution of a function', done => {
-    let lastInokeTime = 0;
+    let lastInvokeTime = 0;
     let count = 0;
     let invokeCount = 0;
     const intervalTime = 100;
@@ -13,8 +13,8 @@ describe('throttle', () => {
 
       invokeCount += 1;
 
-      expect(currentTime - lastInokeTime > intervalTime).to.be.ok();
-      lastInokeTime = currentTime;
+      expect(currentTime - lastInvokeTime > intervalTime).to.be.ok();
+      lastInvokeTime = currentTime;
     });
 
     const intervalId = setInterval(() => {
