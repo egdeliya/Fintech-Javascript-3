@@ -3,7 +3,6 @@
 // function applyDataMask(field) {
 //   const mask = field.dataset.mask.split('');
 //
-//   // For now, this just strips everything that's not a number
 //   function stripMask(maskedData) {
 //     function isDigit(char) {
 //       return /\d/.test(char);
@@ -11,7 +10,6 @@
 //     return maskedData.split('').filter(isDigit);
 //   }
 //
-//   // Replace `_` characters with characters from `data`
 //   function applyMask(data) {
 //     return mask.map(function(char) {
 //       if (char !== '_') {
@@ -20,6 +18,7 @@
 //       if (data.length === 0) {
 //         return char;
 //       }
+//
 //       return data.shift();
 //     }).join('');
 //   }
