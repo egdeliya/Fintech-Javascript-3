@@ -11,7 +11,6 @@ function getRepoElement(repo) {
     const newFieldElement = newElement.querySelector('.repo__' + field);
 
     newFieldElement.textContent = fieldValue;
-    newElement.dataset[field] = fieldValue;
   });
 
   return newElement;
@@ -27,24 +26,43 @@ function renderList(repos = []) {
   listElement.appendChild(fragment);
 }
 
-function makeGetRequest(url, successCallback, errorCallback) {
+function makeGetRequest(url) {
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', url, true);
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState !== 4) {
-      return;
-    }
-    if (xhr.status !== 200) {
-      const error = new Error('Ошибка ' + xhr.status);
+  const getRequest = new Promise(function(successCallback, errorCallback) {
+    xhr.open('GET', url, true);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== 4) {
+        return;
+      }
+      if (xhr.status !== 200) {
+        const error = new Error('Ошибка ' + xhr.status);
 
-      error.code = xhr.statusText;
-      errorCallback(error);
-    } else {
-      successCallback(xhr.responseText);
+        error.code = xhr.statusText;
+        errorCallback(error);
+      } else {
+        successCallback(xhr.responseText);
+      }
+    };
+
+    xhr.send();
+  });
+
+  getRequest.then(function parseResponse(request) {
+    let data;
+
+    try {
+      data = JSON.parse(request);
+    } catch (err) {
+      console.error(new Error('Ошибка при чтении из json'));
     }
-  };
-  xhr.send();
+
+    if (data) {
+      renderList(data);
+    }
+  }, error => {
+    console.error(error.message);
+  });
 }
 
 function onScrollHandler() {
@@ -54,38 +72,12 @@ function onScrollHandler() {
   function onScrollHandlerWrapper() {
     lastLoadedPage += 1;
 
-    makeGetRequest(urlWithoutPage + lastLoadedPage, request => {
-      let data;
-
-      try {
-        data = JSON.parse(request);
-      } catch (err) {
-        console.error(new Error('Ошибка при чтении из json'));
-      }
-      if (data) {
-        renderList(data);
-      }
-    }, error => {
-      console.error(error);
-    });
+    makeGetRequest(urlWithoutPage + lastLoadedPage);
   }
 
   onScrollHandlerWrapper();
 }
 
-makeGetRequest('https://api.github.com/orgs/facebook/repos?page=1', request => {
-  let data;
-
-  try {
-    data = JSON.parse(request);
-  } catch (err) {
-    console.error(new Error('Ошибка при чтении из json'));
-  }
-  if (data) {
-    renderList(data);
-  }
-}, error => {
-  console.error(error);
-});
-
+// исполняемый код
+makeGetRequest('https://api.github.com/orgs/facebook/repos?page=1');
 window.addEventListener('scroll', onScrollHandler);

@@ -24,6 +24,7 @@ function onClick() {
   const newLiElement = document.createElement('li');
   const curDate = new Date();
 
+  newLiElement.classList = ['check-list__item'];
   newLiElement.textContent = '2xClick - ' + curDate.toString()
     .split(' ')
     .slice(0, -4)
@@ -32,4 +33,5 @@ function onClick() {
   checkList.appendChild(newLiElement);
 }
 
+// ------------ test -------------------
 doubleClick(btnClickMe, onClick, 500);
